@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/conrad3rd/goMods/mods/doctor"
 	"github.com/inancgumus/screen"
@@ -21,7 +22,18 @@ func main() {
 
 	fmt.Println(whatToSay)
 
-	userInput, _ := reader.ReadString('\n')
+	for {
+		fmt.Print("-> ")
+		userInput, _ := reader.ReadString('\n')
 
-	fmt.Println(userInput)
+		userInput = strings.Replace(userInput, "\r\n", "", -1)
+		userInput = strings.Replace(userInput, "\n", "", -1)
+
+		if userInput == "quit" {
+			fmt.Println(doctor.Response(userInput))
+			break
+		}
+		fmt.Println(doctor.Response(userInput))
+
+	}
 }
