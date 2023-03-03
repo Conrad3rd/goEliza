@@ -9,7 +9,7 @@ import (
 	"github.com/conrad3rd/goMods/mods/doctor"
 	"github.com/inancgumus/screen"
 )
-
+const greenArrow = "\033[32m➜ \033[0m"
 func main() {
 	// Clear all the characters on the screen
 	screen.Clear()
@@ -23,7 +23,7 @@ func main() {
 	fmt.Println(whatToSay)
 
 	for {
-		fmt.Print("-> ")
+		fmt.Print(greenArrow)
 		userInput, _ := reader.ReadString('\n')
 
 		userInput = strings.Replace(userInput, "\r\n", "", -1)
